@@ -1,0 +1,23 @@
+include partials/header.html
+title Send Parameters By Jade 
+h1 My Memo Jade
+-if (name != undefined){
+    div#result
+        p #{name}'s memo
+        p Created at #{date}
+        p Content :
+        p #{message}
+        img(src='#{image}')
+        #link #{url}
+-} else {
+form#upload(action="/jade", method="post", enctype="multipart/form-data")
+    input#name(type="text", name="name", placeholder="Name")
+    br
+    textarea#message(name="message", placeholder="Message")
+    br
+    input#img(type="file", name="image", accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*", onchange="upload(this)") 
+    br
+    div(id="viewer",style="width:100px;height:100px;")
+    input#submit(type="submit" value="Send")
+-}
+include partials/footer.html

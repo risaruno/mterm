@@ -1,0 +1,36 @@
+<%- include('partials/header.html'); %>
+<title>Send Parameters by EJS</title>
+<h1>My Memo Ejs</h1>
+
+<% if(typeof name != 'undefined'){%>
+<div class="result">
+  <%= name %>'s Memo<br />
+  Created at <%= date %><br />
+  Content : <br />
+  <%= message %><br />
+  <div class="image">
+    <img
+      src="<%= image %>"
+      alt="<%= image %>"
+      style="width: 100px; height: 100px"
+    />
+  </div>
+  <div id="link"><%= url %></div>
+  <a href="./ejs"><Button>Try Again</Button></a>
+</div>
+<% } else { %>
+<form action="/ejs" enctype="multipart/form-data" method="post">
+  <input type="text" name="name" id="name" placeholder="Name" /><br />
+  <textarea name="message" id="message" placeholder="Message"></textarea><br />
+  <input
+    type="file"
+    name="image"
+    id="img"
+    accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*"
+    onchange="upload(this)"
+  /><br />
+  <div id="viewer" style="width: 100px; height: 100px"></div>
+  <input type="submit" value="Save" />
+</form>
+<img src="../images/image-1621245979634-instagram.png" alt="" />
+<% } %> <%- include('partials/footer.html'); %>
